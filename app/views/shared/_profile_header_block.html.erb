@@ -1,15 +1,9 @@
 <div class="row">
-  <div class="col-sm-12">
+  <div class="col-sm-12 profile-header">
     <div class="hero-image" <%= background_image(@profile) %> >
       <%= image_tag @profile.photo.expiring_url, class: "profile-photo" %>
       <div class="username"><%= @profile.name %></div>
-      <% if current_user == @profile.user %>
-        <!-- No button; can't befriend yourself -->
-      <% elsif current_user.friended_users.include? @profile.user %>
-        <%= button_to "Remove friend", user_unfriend_path(@profile.user), class: "btn btn-default friend-btn", method: :get %>
-      <% else %>
-        <%= button_to "Add user as friend", user_friend_path(@profile.user), class: "btn btn-default friend-btn", method: :get %>
-      <% end %>
+      <%= render partial: "shared/friend_or_unfriend_button", locals: { user: @profile.user } %>
     </div>
     <nav class="profile-navigation-bar">
       <div class="profile-photo-spacer"></div>

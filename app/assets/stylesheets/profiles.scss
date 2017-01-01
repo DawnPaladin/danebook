@@ -47,12 +47,13 @@
   }
 }
 
-.friend-btn {
-  position: absolute;
-  bottom: 3em;
-  left: 230px;
-}
-
-.username {
-  text-shadow: 2px 2px 6px black;
+.profile-header {
+  .friend-btn {
+    position: absolute;
+    bottom: 3em;
+    left: 230px;
+  }
+  .username {
+    text-shadow: 2px 2px 6px black;
+  }
 }

@@ -42,7 +42,15 @@ class UsersController < ApplicationController
   end
 
   def index
-    redirect_to root_path
+    if params[:search]
+      user = User.find_by_first_name(params[:search])
+      if user.nil?
+        flash[:warning] = "Could not find a user by that name"
+      else
+        redirect_to user_path(user)
+      end
+    end
+    @users = User.all
   end
 
   private
