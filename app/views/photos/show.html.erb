@@ -2,15 +2,14 @@
   <div class="row">
     <div class="col-sm-8">
       <div class="panel panel-default">
-        <%= image_tag @photo.image.expiring_url %>
+        <%= image_tag @photo.image.expiring_url, class: "img-responsive" %>
       </div>
     </div>
     <div class="col-sm-4">
-      <%= image_tag "harry_potter_small.jpg", style: "display: inline-block" %>
-      <div class="username"><%= @profile.name %></div>
-      <div class="like-line"><a href="#">Like</a></div>
-      <%= render partial: 'comments/authoring_box' %>
-      <%# render partial: 'comments/index', collection: @posts, as: :post %>
+      <div class="photo-user">
+        <%= image_tag @photo.user.profile.photo.expiring_url, class: "photo-user-photo" %>
+        <%= link_to @profile.name, user_profile_path(@profile), class: "photo-user-name" %>
+      </div>
     </div>
   </div>
 </div>

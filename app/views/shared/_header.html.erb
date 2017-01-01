@@ -1,8 +1,8 @@
 <nav class="navbar navbar-fixed-top main-nav">
-  <a href="home.html" class="navbar-brand white-nav-text">
+  <%= link_to user_profile_path(current_user), class: "navbar-brand white-nav-text" do %>
     <%= image_tag("danish_flag.gif", options={}) %>
     Danebook
-  </a>
+  <% end %>
   <%= form_tag users_path, method: :get, class: "navbar-form search-bar" do %>
     <label for="search">Find a user:</label>
     <%= text_field_tag(

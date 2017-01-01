@@ -48,3 +48,17 @@
     }
   }
 }
+
+.photo-user {
+  text-align: center;
+  width: 220px;
+  .photo-user-photo {
+    width: 200px;
+    height: 200px;
+    margin: 10px;
+    display: block;
+  }
+  .photo-user-name {
+    font-weight: bold;
+  }
+}
