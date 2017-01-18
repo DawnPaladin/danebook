@@ -22,9 +22,11 @@
     <%= link_to "Delete", post_path(post), method: :delete, remote: true, class: "pull-right" %>
 
     <%= render partial: 'likes/index', locals: { likes: post.likes } %>
-    <%= render partial: 'comments/show', collection: post.comments, as: :comment %>
+    <div class="comments">
+      <%= render partial: 'comments/show', collection: post.comments, as: :comment %>
+    </div>
 
-    <%= form_for [post, post.comments.build] do |f| %>
+    <%= form_for [post, post.comments.build], remote: true do |f| %>
       <%= f.text_field :body,
         placeholder: "Write a comment...",
         class: "form-control"

@@ -84,16 +84,16 @@
             <%= profile_builder.date_select :birthday, default: Date.yesterday, start_year: Date.today.year, end_year: 100.years.ago.year %>
 
             <div>
-              <%= profile_builder.label :sex do %>
-                <%= profile_builder.radio_button :sex, "female", required: true %>
+              <%= profile_builder.label :sex_female do %>
+                <%= profile_builder.radio_button :sex, "female", required: true, id: "user_profile_attributes_sex_female" %>
                 Female
               <% end %>
-              <%= profile_builder.label :sex do %>
-                <%= profile_builder.radio_button :sex, "male", required: true %>
+              <%= profile_builder.label :sex_male do %>
+                <%= profile_builder.radio_button :sex, "male", required: true, id: "user_profile_attributes_sex_male" %>
                 Male
               <% end %>
-              <%= profile_builder.label :sex do %>
-                <%= profile_builder.radio_button :sex, "other", required: true %>
+              <%= profile_builder.label :sex_other do %>
+                <%= profile_builder.radio_button :sex, "other", required: true, id: "user_profile_attributes_sex_other" %>
                 Other
               <% end %>
             </div>
