@@ -15,21 +15,31 @@ class PostsController < ApplicationController
 
   def create
     @post = current_user.posts.build(strong_post_params)
-    if @post.save
-      flash[:success] = "Post published!"
-      redirect_back(fallback_location: user_posts_path(current_user))
-    else
-      flash[:warning] = @post.errors.full_messages
-      @profile = User.find(params[:user_id]).profile
-      redirect_back(fallback_location: user_posts_path(current_user))
+    respond_to do |format|
+      if @post.save
+        format.js
+        format.html do
+          flash[:success] = "Post published!"
+          redirect_back(fallback_location: user_posts_path(current_user))
+        end
+      else
+        format.js do
+          flash.now[:warning] = @post.errors.full_messages
+          render 'shared/_flash', locals: {flash: flash}
+        end
+        format.html do
+          flash[:warning] = @post.errors.full_messages
+          @profile = User.find(params[:user_id]).profile
+          redirect_back(fallback_location: user_posts_path(current_user))
+        end
+      end
     end
   end
 
   def destroy
     @post = current_user.posts.find(params[:id])
     if @post.destroy
-      flash[:success] = "Post deleted!"
-      redirect_to user_posts_path(current_user)
+      respond_to :js
     else
       flash[:warning] = @post.errors.full_messages
       redirect_to user_posts_path(current_user)

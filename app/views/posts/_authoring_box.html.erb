@@ -1,5 +1,5 @@
 <%# binding.pry %>
-<%= form_for [@user, @post] do |form|%>
+<%= form_for [@user, @post], remote: true do |form|%>
   <div class="panel panel-default">
     <div class="panel-heading">
       <h3 class="panel-title">Post</h3>

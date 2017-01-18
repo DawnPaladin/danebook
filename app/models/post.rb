@@ -4,5 +4,7 @@ class Post < ApplicationRecord
 
   has_many :likes, as: :likable
 
-  validates :body, length: { maximum: 10000 }
+  validates :body, length: { maximum: 10000, minimum: 3 }
+
+  default_scope { order(created_at: :desc) }
 end
