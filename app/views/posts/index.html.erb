@@ -10,9 +10,6 @@
       <%= render 'posts/authoring_box' if @user == current_user %>
       <div id="posts">
         <%= render partial: 'posts/show', collection: @posts, as: :post %>
-        <% if @posts.length == 0 %>
-          <p class="text-center" style="margin-top: 2em">This user has no posts.</p>
-        <% end %>
       </div>
     </div>
   </div>
